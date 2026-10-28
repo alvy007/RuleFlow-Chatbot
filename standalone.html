@@ -1,0 +1,142 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0a111f"><meta name="description" content="RuleFlow: an interactive, offline-friendly rule-based study chatbot with keyword matching and conversation context.">
+<title>RuleFlow | Rule-Based Study Chatbot</title><style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+:root{color-scheme:dark;--bg:#0a111f;--panel:#111d2d;--panel2:#162337;--line:#25364a;--text:#e8f2ff;--sub:#91a2ba;--accent:#7ce5c5;--yellow:#fbd684;font-family:'DM Sans',system-ui,sans-serif}*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 5% 0%,#132b3a 0,transparent 38%),var(--bg);color:var(--text)}button,textarea{font:inherit}button{cursor:pointer}button:focus-visible,textarea:focus-visible,a:focus-visible{outline:2px solid var(--accent);outline-offset:3px}a{color:inherit;text-decoration:none}.site{max-width:1500px;margin:0 auto;padding:0 40px}.topbar{height:92px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line)}.brand{display:flex;gap:12px;align-items:center;font-family:'Space Grotesk',sans-serif;font-size:25px;font-weight:700;letter-spacing:-1.1px}.brand small{display:block;font-size:9px;letter-spacing:2px;color:var(--sub);font-family:'DM Sans',sans-serif;margin-top:2px}.accent{color:var(--accent)}.logo{display:grid;place-items:center;width:45px;height:45px;background:#183f42;color:var(--accent);border:1px solid #3c8075;border-radius:13px;font-size:28px}.topright{display:flex;align-items:center;gap:20px}.status,.version{font-size:10px;letter-spacing:1.3px;font-weight:800}.status{color:var(--accent)}.status i,.pulse{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--accent);box-shadow:0 0 12px var(--accent);margin-right:7px}.version{color:#718298}.workspace{display:grid;grid-template-columns:minmax(275px,365px) minmax(0,1fr);gap:24px;margin-top:27px;min-height:min(775px,calc(100vh - 145px))}.sidebar{display:flex;flex-direction:column;min-width:0}.side-title,.section-title,.foot-label{font-size:10px;font-weight:800;letter-spacing:1.9px;color:#8499b4}.side-title,.section-title{display:flex;justify-content:space-between;align-items:center}.side-title span{color:var(--accent)}.hero{position:relative;overflow:hidden;background:linear-gradient(140deg,#142a36,#132236 65%,#14283a);border:1px solid #2b4b51;border-radius:22px;padding:32px 29px;margin:19px 0 34px;min-height:270px}.hero-glow{position:absolute;font-size:220px;color:#317f72;opacity:.13;right:-38px;top:5px}.eyebrow{font-size:10px;letter-spacing:1.9px;font-weight:800;color:var(--accent);position:relative}.hero h1{font-family:'Space Grotesk',sans-serif;letter-spacing:-1.7px;font-size:35px;line-height:1.15;margin:20px 0 16px;position:relative}.hero h1 em{font-style:normal;color:var(--accent)}.hero p{font-size:12.5px;line-height:1.85;color:#b4c7d2;position:relative;max-width:270px}.section-title span{font-size:17px;color:var(--accent)}.prompt-list{display:grid;gap:9px;margin:14px 0 24px}.quick-prompt{width:100%;text-align:left;color:#d9e7fa;background:#131f30;border:1px solid #294055;border-radius:11px;padding:13px 16px;font-size:13px;transition:.18s}.quick-prompt:before{content:'↗';float:right;color:var(--accent)}.quick-prompt:hover{background:#1e3449;border-color:#509c91}.sidebar-foot{margin-top:auto;border-top:1px solid var(--line);padding-top:23px}.sidebar-foot p{color:var(--sub);font-size:12px;line-height:1.75}.steps{display:flex;justify-content:space-between;gap:8px;color:var(--accent);font-size:10px;font-weight:800;letter-spacing:1px}.conversation{min-width:0;background:var(--panel);border:1px solid #2a3c50;border-radius:23px;display:flex;flex-direction:column;overflow:hidden;box-shadow:0 20px 45px #0002}.chat-header{height:91px;display:flex;align-items:center;justify-content:space-between;padding:0 25px;border-bottom:1px solid var(--line)}.chat-profile{display:flex;align-items:center;gap:13px}.profile-logo{display:grid;place-items:center;width:43px;height:43px;border-radius:13px;background:#234b4a;color:var(--accent);font-size:24px}.chat-profile strong{font-family:'Space Grotesk';font-size:16px}.chat-profile small{display:block;font-size:11px;color:var(--sub);margin-top:6px}.reset{color:#d2dfed;border:1px solid var(--line);border-radius:10px;background:#172638;padding:10px 14px;font-size:12px}.reset:hover{border-color:var(--accent)}.session-bar{display:flex;justify-content:space-between;align-items:center;padding:14px 28px;background:#112131;border-bottom:1px solid var(--line);font-size:9px;font-weight:800;letter-spacing:1.6px;color:#95b1c2}.session-bar>span:first-child{color:var(--accent)}.messages{flex:1;min-height:320px;max-height:calc(100vh - 385px);overflow-y:auto;padding:32px 29px;scroll-behavior:smooth}.message{display:flex;gap:12px;align-items:flex-start;margin-bottom:27px}.message.user{flex-direction:row-reverse}.avatar{width:33px;height:33px;flex:0 0 33px;border-radius:11px;background:#2e5951;color:var(--accent);display:grid;place-items:center;font-weight:800}.user .avatar{background:#315373;color:#d6efff}.bubble-group{max-width:min(82%,580px);display:flex;flex-direction:column;align-items:flex-start}.user .bubble-group{align-items:flex-end}.sender{font-size:10px;font-weight:800;color:#adc7d4;letter-spacing:.5px;margin:0 0 8px}.bubble{margin:0;background:#192b40;border:1px solid #30465e;border-radius:3px 16px 16px 16px;padding:14px 17px;line-height:1.75;font-size:13px;white-space:pre-wrap;overflow-wrap:anywhere}.user .bubble{background:#244b55;border-color:#33676d;border-radius:16px 3px 16px 16px}.time{color:#728aa0;margin-top:7px;font-size:9px}.typing .bubble{opacity:.75;font-style:italic}.composer-area{border-top:1px solid var(--line);padding:19px 25px 12px}.composer{display:flex;align-items:flex-end;background:#0c1828;border:1px solid #355067;border-radius:14px;padding:8px 8px 8px 16px;gap:8px}.composer:focus-within{border-color:#62baa9}.composer textarea{width:100%;resize:none;overflow-y:auto;max-height:140px;border:0;background:none;outline:none;color:var(--text);font-size:13px;padding:10px 0;line-height:1.5}.composer textarea::placeholder{color:#7389a2}.composer button{border:0;flex:0 0 40px;height:40px;border-radius:11px;background:var(--accent);color:#0c2121;font-size:19px}.composer button:disabled{opacity:.5}.hint{text-align:center;color:#70849a;font-size:10px;margin:12px 0 0}footer{display:flex;gap:11px;justify-content:center;padding:25px;color:#647a93;font-size:10px;letter-spacing:1.4px;font-weight:700}.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)}@media(max-width:850px){.site{padding:0 18px}.workspace{grid-template-columns:1fr}.sidebar{display:block}.hero{min-height:unset;margin-bottom:22px}.prompt-list{grid-template-columns:repeat(3,minmax(0,1fr))}.sidebar-foot{display:none}.conversation{height:650px}.messages{max-height:none}.version{display:none}}@media(max-width:520px){.topbar{height:70px}.brand{font-size:21px}.status{font-size:9px}.workspace{gap:17px;margin-top:18px}.hero{padding:22px}.hero h1{font-size:30px}.prompt-list{grid-template-columns:repeat(2,minmax(0,1fr))}.quick-prompt{font-size:11px;padding:11px}.conversation{height:620px}.chat-header{padding:0 14px;height:76px}.chat-profile small{max-width:180px;line-height:1.3}.reset span{display:none}.messages{padding:22px 12px}.composer-area{padding:13px}.bubble-group{max-width:85%}footer{font-size:8px;flex-wrap:wrap;line-height:1.7}}
+
+</style></head>
+<body><div class="site"><header class="topbar"><a class="brand" href="./"><span class="logo">✳</span><span>Rule<span class="accent">Flow</span><small>AI FOUNDATIONS LAB</small></span></a><div class="topright"><span class="status"><i></i> RULE ENGINE ONLINE</span><span class="version">WEEK 01 / PROJECT 02</span></div></header>
+<main class="workspace"><aside class="sidebar"><div class="side-title">EXPLORE THE ENGINE <span>06 PROMPTS</span></div><div class="hero"><div class="hero-glow">✳</div><div class="eyebrow">YOUR STUDY COMPANION</div><h1>Small rules.<br><em>Smart responses.</em></h1><p>A transparent chatbot built with keyword matching, intent rules, and light conversation memory.</p></div><div class="section-title">TRY A PROMPT <span>↗</span></div><div id="promptList" class="prompt-list"></div><div class="sidebar-foot"><span class="foot-label">HOW IT WORKS</span><p>Normalize text → match rules → select intent → build response.</p><div class="steps"><span>01 INPUT</span><span>02 MATCH</span><span>03 REPLY</span></div></div></aside>
+<section class="conversation" aria-label="Chat with RuleFlow"><div class="chat-header"><div class="chat-profile"><span class="profile-logo">✳</span><div><strong>RuleFlow Assistant</strong><small>Rule-based conversational system · No external AI APIs</small></div></div><button id="resetBtn" class="reset" type="button" aria-label="Reset conversation">↺ <span>New chat</span></button></div>
+<div class="session-bar"><span><span class="pulse"></span> SESSION ACTIVE</span><span><span id="sessionCount">0</span> EXCHANGES</span></div><div id="messages" class="messages" role="log" aria-live="polite" aria-label="Messages"></div><div class="composer-area"><form id="composer" class="composer"><label class="sr-only" for="messageInput">Your message</label><textarea id="messageInput" rows="1" maxlength="500" placeholder="Ask me something about AI, coding or study…"></textarea><button id="sendBtn" type="submit" aria-label="Send message">➤</button></form><p class="hint">Press Enter to send · Shift + Enter for new line · Built with vanilla JavaScript</p></div></section></main><footer>CLASSICAL AI LAB <span>•</span> RULE-BASED INTENT MATCHING <span>•</span> OPEN SOURCE EDUCATIONAL PROJECT</footer></div><script>
+const __engine = (() => {
+/** A transparent rule-based conversation engine. No model/API calls. */
+function normalize(input) {
+  return String(input ?? '').normalize('NFKC').toLowerCase().replace(/a\s*\*/g, 'a star')
+    .replace(/[^a-z0-9\s']/g, ' ').replace(/\s+/g, ' ').trim();
+}
+
+function newSession() {
+  return { name: null, lastIntent: null, exchanges: 0, closed: false };
+}
+
+const rules = [
+  { id: 'greeting', triggers: [/\b(?:hi|hello|hey|good morning|good afternoon|good evening)\b/],
+    answer: name => `Hello${name ? `, ${name}` : ''}! I'm RuleFlow, a rule-based study assistant. Ask me about AI search, coding, internships, or GitHub.` },
+  { id: 'bfs', triggers: [/\b(?:bfs|breadth first search|breadth first)\b/],
+    answer: () => 'BFS explores states level by level using a FIFO queue. In an unweighted graph, it finds a shortest path by number of edges. It tracks visited states to avoid revisiting them.',
+    more: 'BFS process: 1) enqueue the initial state, 2) dequeue a state, 3) check the goal, 4) enqueue its unseen neighbors, 5) repeat. Time: O(V + E); space: O(V).' },
+  { id: 'dfs', triggers: [/\b(?:dfs|depth first search|depth first)\b/],
+    answer: () => 'DFS follows one path deeply before backtracking, using a stack or recursion. It is useful for exploration but does not guarantee the shortest path.',
+    more: 'Iterative DFS: push start, pop a state, visit its unseen neighbors, and repeat until the stack is empty or the goal is found. Time: O(V + E) with a visited set.' },
+  { id: 'astar', triggers: [/\b(?:a\s*star|a\s*\*|a\s*\*\s*search|heuristic|manhattan)\b/],
+    answer: () => 'A* selects the state with the lowest f(n) = g(n) + h(n), where g is the cost so far and h estimates the remaining cost. Manhattan distance works well for a four-direction grid.',
+    more: 'To guarantee optimality, use a heuristic that never overestimates the remaining path cost. With four-direction movement of cost 1, h = |x1−x2| + |y1−y2|.' },
+  { id: 'minimax', triggers: [/\b(?:minimax|tic tac toe|tictactoe|game tree)\b/],
+    answer: () => 'Minimax searches possible game outcomes. The AI chooses a move that maximizes its score, assuming the opponent also plays optimally. It is ideal for Tic-Tac-Toe.',
+    more: 'Assign scores to terminal boards: AI win = positive, human win = negative, draw = zero. Evaluate all legal moves recursively and select the move with the highest outcome for the AI.' },
+  { id: 'github', triggers: [/\b(?:github|git|repository|commit|push|version control)\b/],
+    answer: () => 'A simple Git workflow: git init → git add . → git commit -m "Initial commit" → connect a GitHub repository → git push -u origin main. Include a clear README and test instructions.',
+    more: 'For a static HTML/CSS/JS project, you can publish from GitHub Pages. Keep source code, README, screenshots, and test results in your repository.' },
+  { id: 'internship', triggers: [/\b(?:internship|assignment|submission|portfolio|project)\b/],
+    answer: () => 'For a strong internship submission: fulfill each requirement, add input validation, write automated tests, document your algorithm, push to GitHub, then verify the live demo.',
+    more: 'Submission checklist: source repository, working demo, ZIP or requested files, implementation remarks, and a small explanation of design choices and testing.' },
+  { id: 'python', triggers: [/\b(?:python|javascript|coding|programming|code)\b/],
+    answer: () => 'For coding practice, start with small, testable functions. Handle edge cases, name variables clearly, and check outputs with a few automated tests before building the interface.',
+    more: 'A practical plan: understand inputs/outputs → design data structures → implement logic → test corner cases → integrate UI → document and deploy.' },
+  { id: 'study', triggers: [/\b(?:study|learn|practice|revision|prepare|learning|roadmap)\b/],
+    answer: () => 'Try a 45-minute learning sprint: 10 minutes reading, 25 minutes implementing, 10 minutes testing and writing notes. Repeat with gradually harder examples.',
+    more: 'For classical AI: state representation → BFS/DFS → heuristics/A* → adversarial search/Minimax. Build one small working application per concept.' },
+  { id: 'availability', triggers: [/\b(?:deadline|due date|current time|what time|weather|latest news)\b/],
+    answer: () => 'I use fixed local rules, not live web data. Check the official dashboard or source for current deadlines, time, weather, or news.' },
+  { id: 'thanks', triggers: [/\b(?:thanks|thank you|thankyou|appreciate)\b/],
+    answer: () => 'You’re welcome! What would you like to learn next?' },
+  { id: 'goodbye', triggers: [/\b(?:bye|goodbye|see you|exit|quit)\b/],
+    answer: () => 'See you soon! Come back whenever you want to practice a new concept.' },
+  { id: 'help', triggers: [/\b(?:help|menu|topics|what can you do)\b/],
+    answer: () => 'I can explain BFS, DFS, A* search, Minimax, Git/GitHub, programming basics, study plans, and internship project submissions. Try a topic!' }
+];
+
+const quickPrompts = [
+  'Explain BFS', 'What is A* search?', 'How does Minimax work?',
+  'GitHub tips', 'Internship checklist', 'Study plan'
+];
+
+function respond(message, session = newSession()) {
+  const text = normalize(message);
+  if (!text) return { intent: 'empty', reply: 'Please type a question or choose one of the suggested prompts.' };
+  session.exchanges += 1;
+  // Personalization is intentionally narrow, not a claim of understanding unrestricted text.
+  const nameMatch = text.match(/\b(?:my name is|call me|i am called)\s+([a-z][a-z '-]{0,30})$/);
+  if (nameMatch) {
+    const name = nameMatch[1].trim().replace(/\s+/g, ' ').split(/\s+(?:and|but|please)\b/)[0];
+    session.name = name.split(' ').slice(0, 3).map(s => s.charAt(0).toUpperCase() + s.slice(1)).join(' ');
+    session.lastIntent = 'name';
+    session.closed = false;
+    return { intent: 'name', reply: `Nice to meet you, ${session.name}! I'll remember your name during this chat.` };
+  }
+  if (/\b(?:what is my name|what's my name|do you know my name)\b/.test(text)) {
+    session.lastIntent = 'recall';
+    return { intent: 'recall', reply: session.name ? `You told me your name is ${session.name}.` : "I don't know your name yet. Try: My name is Alex." };
+  }
+  if (/^(?:tell me more|more|explain more|give me details|details|example)$/.test(text)) {
+    const prior = rules.find(rule => rule.id === session.lastIntent);
+    return { intent: 'followup', reply: prior?.more ?? 'Choose a topic first, like BFS, A*, or GitHub, and I can explain it further.' };
+  }
+  // Explicit topic requests should take precedence over broad greeting words.
+  const ordered = [...rules.filter(r => !['greeting', 'thanks', 'goodbye', 'help'].includes(r.id)),
+    ...rules.filter(r => ['goodbye', 'thanks', 'help', 'greeting'].includes(r.id))];
+  const rule = ordered.find(r => r.triggers.some(pattern => pattern.test(text)));
+  if (!rule) {
+    session.lastIntent = null;
+    session.closed = false;
+    return { intent: 'fallback', reply: "I'm a rule-based bot, so I may not recognize that request. Try BFS, DFS, A*, Minimax, GitHub, or ask for 'help'." };
+  }
+  session.lastIntent = rule.id;
+  session.closed = rule.id === 'goodbye';
+  return { intent: rule.id, reply: rule.answer(session.name) };
+}
+
+return {normalize,newSession,quickPrompts,respond};
+})();
+const {normalize,newSession,quickPrompts,respond} = __engine;
+const $ = id=>document.getElementById(id);
+let session=newSession();let busy=false;let generation=0;
+const messages=$('messages'),composer=$('composer'),input=$('messageInput'),send=$('sendBtn');
+const safeText=(tag,cls,text)=>{const el=document.createElement(tag);el.className=cls;el.textContent=text;return el};
+function addBubble(who,body){
+  const item=safeText('article',`message ${who}`, '');
+  const avatar=safeText('div','avatar',who==='bot'?'✦':'Y');
+  avatar.setAttribute('aria-hidden','true');
+  const content=safeText('div','bubble-group','');
+  content.append(safeText('span','sender',who==='bot'?'RuleFlow':'You'));
+  content.append(safeText('p','bubble',body));
+  content.append(safeText('small','time',new Date().toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'})));
+  item.append(avatar,content);messages.append(item);messages.scrollTop=messages.scrollHeight;
+  return item;
+}
+function autoSize(){input.style.height='auto';input.style.height=Math.min(140,input.scrollHeight)+'px'}
+function sendMessage(text){
+  const msg=String(text).trim();if(!msg||busy)return;
+  busy=true;send.disabled=true;input.disabled=true;
+  addBubble('user',msg);input.value='';autoSize();
+  const typing=addBubble('bot','Typing…');typing.classList.add('typing');
+  const response=respond(msg,session);const thisGeneration=generation;
+  setTimeout(()=>{if(thisGeneration!==generation)return;typing.remove();addBubble('bot',response.reply);busy=false;send.disabled=false;input.disabled=false;input.focus();$('sessionCount').textContent=String(session.exchanges);},210);
+}
+composer.addEventListener('submit',e=>{e.preventDefault();sendMessage(input.value)});
+input.addEventListener('input',autoSize);
+input.addEventListener('keydown',e=>{if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();sendMessage(input.value)}});
+function makePrompts(){
+  for(const prompt of quickPrompts){
+    const b=safeText('button','quick-prompt',prompt);b.type='button';
+    b.addEventListener('click',()=>sendMessage(prompt));$('promptList').append(b);
+  }
+}
+$('resetBtn').addEventListener('click',()=>{
+  generation++;session=newSession();busy=false;messages.replaceChildren();input.disabled=false;send.disabled=false;input.value='';autoSize();$('sessionCount').textContent='0';
+  addBubble('bot',"Welcome to RuleFlow! I'm a transparent, rule-based study assistant. Choose a prompt or type a message to get started.");input.focus();
+});
+makePrompts();addBubble('bot',"Welcome to RuleFlow! I'm a transparent, rule-based study assistant. Choose a prompt or type a message to get started.");
+
+</script></body></html>
